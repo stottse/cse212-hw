@@ -34,12 +34,26 @@ public static class ArraysTester {
     /// <returns>array of doubles that are the multiples of the supplied number</returns>
     private static double[] MultiplesOf(double number, int length)
     {
+        //I am setting up a list to hold the values from the loop
+        var multipleList1 = new double [length];
+        //I want to put in a loop here that is going to go through and basically do X * number for
+        //however long the length is it will do that
+        //As my code goes through the for loop it is going to calculate the value for each
+        //based on each i value. the code is also going to add each value to the list
+        //as it goes through the loop
+        for (int i=0 ; i<length; i++)
+        {
+            multipleList1[i] = number * (i+1);
+
+        }
+        return multipleList1;
+
         // TODO Problem 1 Start
         // Remember: Using comments in your program, write down your process for solving this problem
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
 
-        return new double[0]; // replace this return statement with your own
+        
     }
     
     /// <summary>
@@ -56,6 +70,51 @@ public static class ArraysTester {
         // Remember: Using comments in your program, write down your process for solving this problem
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
+
+        //My first thoughts on this part of the program are not the most efficient at all
+        //but I am pretty sure it will work. I am thinking that I will have me loop go through
+        //every single value in the list and add the number to each individual number and then
+        //so for example if the list is [1,2,3] and i am shifting right 4 then it will take
+        //the 1 and add 4 then put in into a new list. then it will take 2 and add 4 then put
+        //it into the new list and then the same thing for 3.
+
+        //After I cam up with my idea above, I realized it is not going to work because the
+        //lists are supposed to not only move to the right but the last numbers have to 
+        //be carried over to the left side...
+
+        //I think after studying a little bit more I am going to try and do what I had
+        //originally planned, but I will use remove range and insert range to move the end portion
+        //of the list to the front.
+
+        //The following code didn't work and I had to change the code above so that there
+        //was a variable that coulde be returned to so I think that was too complicated and
+        //will change it:
+
+        //var numList1 = new double [data.Count];
+
+       // for (int i=0; i<data.Count; i++)
+        //{
+            //numList1[i] = data[i] + amount;
+
+
+        //}
+        //return numList1;
+
+
+        //I think I need to try it without using a loop.
+
+        int i = data.Count;
+        int checkRemainder = amount % i;
+
+        if (checkRemainder > 0)
+        {
+            List<int> newList = data.GetRange(i - checkRemainder, checkRemainder);
+            data.RemoveRange(i-checkRemainder,checkRemainder);
+            data.InsertRange(0,newList);
+
+        }
+
+
 
     }
 }
