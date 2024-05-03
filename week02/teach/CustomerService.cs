@@ -15,6 +15,16 @@ public class CustomerService {
         // Expected Result: 
         Console.WriteLine("Test 1");
 
+
+        var result = new CustomerService(0);
+        result.AddNewCustomer();
+        Console.WriteLine($"customers status: {result}");
+        
+
+        
+        
+
+
         // Defect(s) Found: 
 
         Console.WriteLine("=================");
@@ -24,11 +34,39 @@ public class CustomerService {
         // Expected Result: 
         Console.WriteLine("Test 2");
 
+        var result1 = new CustomerService(1);
+        result1.AddNewCustomer();
+        result1.AddNewCustomer();
+        result1.AddNewCustomer();
+
         // Defect(s) Found: 
 
         Console.WriteLine("=================");
 
         // Add more Test Cases As Needed Below
+        Console.WriteLine("Test 3");
+
+        var result2 = new CustomerService(0);
+        result2.AddNewCustomer();
+        Console.WriteLine($"customers status: {result2}");
+        result2.AddNewCustomer();
+        Console.WriteLine($"customers status: {result2}");
+        result2.ServeCustomer();
+        Console.WriteLine($"customers status: {result2}");
+
+        
+        // Defect(s) Found: 
+
+        Console.WriteLine("=================");
+
+        Console.WriteLine("Test 4");
+
+        var result3 = new CustomerService(1);
+        result3.ServeCustomer();
+        
+        // Defect(s) Found: 
+
+        Console.WriteLine("=================");
     }
 
     private readonly List<Customer> _queue = new();
