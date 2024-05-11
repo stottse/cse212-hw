@@ -12,10 +12,11 @@
         players.AddPerson("Bob", 2);
         players.AddPerson("Tim", 5);
         players.AddPerson("Sue", 3);
-        // Console.WriteLine(players);    // This can be un-commented out for debug help
+         Console.WriteLine(players);    // This can be un-commented out for debug help
         while (players.Length > 0)
             players.GetNextPerson();
-        // Defect(s) Found: 
+        // Defect(s) Found: This took me forever to figure out. I eventually changed the code so that way it was adding
+        //the people and their turns to a list. After doing this, I was able to sucessfully get it to dequeue and enqueue
 
         Console.WriteLine("---------");
 
@@ -38,7 +39,8 @@
         while (players.Length > 0)
             players.GetNextPerson();
 
-        // Defect(s) Found: 
+        // Defect(s) Found: Once I figured out how to solve test 1, this test also passed because my code was 
+        //enqueue and dequeue correctly
 
         Console.WriteLine("---------");
 
@@ -56,7 +58,8 @@
             players.GetNextPerson();
             // Console.WriteLine(players);
         }
-        // Defect(s) Found: 
+        // Defect(s) Found: Because Tim had 0 turns I had to make sure that the program would enqueue him as
+        //if he had unlimited turns. I had to add code to the if statement that said if currentPerson.Turns = 0.
 
         Console.WriteLine("---------");
 
@@ -73,7 +76,9 @@
             players.GetNextPerson();
             // Console.WriteLine(players);
         }
-        // Defect(s) Found: 
+        // Defect(s) Found: The defect found was that I needed to ensure that the code could account for the
+        //-3 that was being passed in for Tims turns. I had to make sure I had currentPerson.Turn <=0 so it
+        //would pick up the -3
 
         Console.WriteLine("---------");
 
@@ -83,6 +88,7 @@
         Console.WriteLine("Test 5");
         players = new TakingTurnsQueue();
         players.GetNextPerson();
-        // Defect(s) Found:
+        // Defect(s) Found: This code already worked and was easy. As long as the count of the list I created was 0,
+        //then it would know nobody was in the queue and it would display the message
     }
 }
