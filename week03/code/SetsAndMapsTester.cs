@@ -111,6 +111,36 @@ public static class SetsAndMapsTester {
         // To display the pair correctly use something like:
         // Console.WriteLine($"{word} & {pair}");
         // Each pair of words should displayed on its own line.
+
+        //I am starting this code off with  new hash set
+        HashSet<string> word = new HashSet<string>();
+
+        //I am going to creat two lists. One will hold the word and the other will hold the reversed word if it has one
+        List<string> firstWord = new List<string>();
+        List<string> reverseWord = new List<string>();
+
+        //I am going to create a loop to go through the list of words from the test and see if it matches with any reverses
+        foreach (var i in words)
+        {
+            string wordReversed = new string (i.Reverse().ToArray());
+            if (word.Contains(wordReversed))
+            {
+                firstWord.Add(i);
+                reverseWord.Add(wordReversed);
+
+            }
+            else
+            {
+                word.Add(i);
+
+            }
+        }
+        for (int i = 0; i <firstWord.Count; i++)
+        {
+            Console.WriteLine($"{firstWord[i]} and {reverseWord[i]}");
+
+        }
+
     }
 
     /// <summary>
