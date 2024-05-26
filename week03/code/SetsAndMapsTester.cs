@@ -201,7 +201,74 @@ public static class SetsAndMapsTester {
     /// #############
     private static bool IsAnagram(string word1, string word2) {
         // Todo Problem 3 - ADD YOUR CODE HERE
-        return false;
+
+        
+
+        //The next part is going to make both words contain only lower case letters
+        string word1Updated = word1.ToLower();
+        string word2Updated = word2.ToLower();
+
+        //The next part is going to get rid of spaces because in some of the test cases, the words have spaces
+        //I got help with this part online because I had never learned the replace function
+        word1Updated = word1Updated.Replace(" ", "");
+        word2Updated = word2Updated.Replace(" ", "");
+
+        //This first if statement will check the length of the two words. If they are not the same, it will
+        //then return false...This caused an issue later so I am moving it now so it is after the spaces are taken out
+        if (word1Updated.Length != word2Updated.Length)
+        {
+            return false;
+        }
+
+        //Now I am creating a dictionary for each word so I can see how many times each letter appears in a word
+        Dictionary<char, int> letters1 = new Dictionary<char, int>();
+        Dictionary<char, int> letters2 = new Dictionary<char, int>();
+
+        //This next part is where I go through each dictionary and count up how many times a letter show up in the word
+        foreach (char i in word1Updated)
+        {
+            if (letters1.ContainsKey(i))
+            {
+                letters1[i]++;
+            }
+            else
+            {
+                letters1[i] = 1;
+
+            }
+
+        }
+
+        foreach (char i in word2Updated)
+        {
+            if (letters2.ContainsKey(i))
+            {
+                letters2[i]++;
+
+            }
+            else
+            {
+                letters2[i] = 1;
+
+            }
+
+        }
+
+        //In the next part I am comparing both dictionaries to see if they contain the same counts of letters in each word
+        foreach (var i in letters1)
+        {
+            char letter = i.Key;
+            int count = i.Value;
+            
+            if (!letters2.ContainsKey(letter) || letters2[letter] != count)
+            {
+                return false;
+            }
+
+        }
+
+        return true;
+        
     }
 
     /// <summary>
