@@ -15,7 +15,8 @@ public class Node {
             else
                 Left.Insert(value);
         }
-        else {
+        //I changed the else to else if and added these paramenters so there will be no duplicate values
+        else if (value > Data) {
             // Insert to the right
             if (Right is null)
                 Right = new Node(value);
@@ -26,7 +27,25 @@ public class Node {
 
     public bool Contains(int value) {
         // TODO Start Problem 2
-        return false;
+
+        //will always return true because value is data
+        if (value == Data){
+            return true;
+        }
+
+        //This part took me a while and was a little confusing because I forget the syntax for logic in c# but after getting
+        //some research I figured it out
+        else if (value < Data){
+            return Left != null && Left.Contains(value);
+
+        }
+
+        //I modeled this one after the same thing I did for the left side
+        else{
+            return Right != null && Right.Contains(value);
+        }
+
+        //return false;
     }
 
     public int GetHeight() {
